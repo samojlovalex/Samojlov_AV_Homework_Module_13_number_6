@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Samojlov_AV_Homework_Module_13_number_6</string>
+
+    <string name="toolbar_title">Потребительская корзина</string>
+    <string name="toolbar_subtitle">Mod. 13 № 6</string>
+    <string name="exit">Exit</string>
+    <string name="toast_exit">Приложение закрыто</string>
+    <string name="nameTV_text">Наименование</string>
+    <string name="priceTV_Text">Цена</string>
+    <string name="nameET_Hint">Введите наименование</string>
+    <string name="priceET_Hint">Введите цену, руб.</string>
+    <string name="weightET_Hint">Введите вес, г</string>
+    <string name="weightTV_Text">Вес</string>
+    <string name="saveBT_Text">Сохранить</string>
+    <string name="nameItemTV_Hint">Название продукта</string>
+    <string name="priceItemTV_Hint">Цена</string>
+    <string name="weightItemTV_Hint">Вес</string>
+    <string name="addProduct_Toast">%1$s добавлен в чек</string>
+    <string name="clearMenu">ClearDB</string>
+    <string name="clearMenu_Toast">База данных очищена</string>
+</resources>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tablePanel"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_gridview_item"
+    app:cardCornerRadius="@dimen/cardCornerRadius"
+    app:cardElevation="@dimen/cardElevation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/padding_text">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/nameTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:text="@string/nameTV_text"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize_panel"
+                    android:textStyle="bold"></TextView>
+
+                <EditText
+                    android:id="@+id/nameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="@string/nameET_Hint"
+                    android:minHeight="@dimen/minHeight"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/Blue"
+                    android:textColorHint="@color/Grey"
+                    android:textSize="@dimen/textSize_panel"
+                    android:textStyle="bold"></EditText>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/priceTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:text="@string/priceTV_Text"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize_panel"
+                    android:textStyle="bold"></TextView>
+
+                <EditText
+                    android:id="@+id/priceET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="@string/priceET_Hint"
+                    android:inputType="number"
+                    android:minHeight="@dimen/minHeight"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/Blue"
+                    android:textColorHint="@color/Grey"
+                    android:textSize="@dimen/textSize_panel"
+                    android:textStyle="bold"></EditText>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/weightTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:text="@string/weightTV_Text"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSize_panel"
+                    android:textStyle="bold"></TextView>
+
+                <EditText
+                    android:id="@+id/weightET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="@string/weightET_Hint"
+                    android:inputType="number"
+                    android:minHeight="@dimen/minHeight"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/Blue"
+                    android:textColorHint="@color/Grey"
+                    android:textSize="@dimen/textSize_panel"
+                    android:textStyle="bold"></EditText>
+
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

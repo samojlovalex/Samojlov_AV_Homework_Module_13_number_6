@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--MainActivity-->
+    <dimen name="layout_width">0dp</dimen>
+    <dimen name="padding">8dp</dimen>
+    <dimen name="padding_text">4dp</dimen>
+    <dimen name="textSize_TextView_Main">40sp</dimen>
+    <dimen name="textSize_Button_Main">18sp</dimen>
+    <dimen name="margin_gridview_item">8dp</dimen>
+    <dimen name="cardCornerRadius">6dp</dimen>
+    <dimen name="cardElevation">6dp</dimen>
+    <dimen name="textSize_panel">13sp</dimen>
+    <dimen name="minHeight">48dp</dimen>
+
+    <dimen name="textSizeTitle_item">14sp</dimen>
+    <dimen name="textSize_item">12sp</dimen>
+
+</resources>
