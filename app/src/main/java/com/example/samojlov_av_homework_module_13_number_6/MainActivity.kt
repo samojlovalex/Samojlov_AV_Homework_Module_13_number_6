@@ -14,12 +14,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.samojlov_av_homework_module_13_number_6.databinding.ActivityMainBinding
-import com.example.samojlov_av_homework_module_13_number_6.databinding.TablePanelBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var bindingTable: TablePanelBinding
 
     private lateinit var toolbarMain: androidx.appcompat.widget.Toolbar
     private lateinit var nameET: EditText
@@ -37,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
-        bindingTable = TablePanelBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 //        setContentView(R.layout.activity_main)
@@ -86,9 +83,9 @@ class MainActivity : AppCompatActivity() {
         title = getString(R.string.toolbar_title)
         toolbarMain.subtitle = getString(R.string.toolbar_subtitle)
 
-        nameET = bindingTable.nameET
-        priceET = bindingTable.priceET
-        weightET = bindingTable.weightET
+        nameET = binding.tablePanel.nameET
+        priceET = binding.tablePanel.priceET
+        weightET = binding.tablePanel.weightET
         saveBT = binding.saveBT
         listViewLV = binding.listViewLV
     }
