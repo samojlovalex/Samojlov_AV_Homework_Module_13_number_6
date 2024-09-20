@@ -41,7 +41,11 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         contentValues.put(KEY_NAME, product.name)
         contentValues.put(KEY_PRICE, product.price)
         contentValues.put(KEY_WEIGHT, product.weight)
-        db.insert(TABLE_NAME, null, contentValues)
+        try {
+            db.insert(TABLE_NAME, null, contentValues)
+        } catch (e: SQLiteException) {
+            e.printStackTrace()
+        }
         db.close()
     }
 
@@ -58,22 +62,52 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
             return productList
         }
 
+        var productId: Int
         var productName: String
         var productPrice: String
         var productWeight: String
         if (cursor.moveToFirst()) {
             do {
+                productId = cursor.getInt(cursor.getColumnIndex("id"))
                 productName = cursor.getString(cursor.getColumnIndex("name"))
                 productPrice = cursor.getString(cursor.getColumnIndex("price"))
                 productWeight = cursor.getString(cursor.getColumnIndex("weight"))
-                val product = Product(productName, productPrice, productWeight)
+                val product = Product(productId, productName, productPrice, productWeight)
                 productList.add(product)
             } while (cursor.moveToNext())
         }
         return productList
     }
+
     fun removeAll() {
         val db = this.writableDatabase
         db.delete(TABLE_NAME, null, null)
+    }
+
+    fun updateProduct(product: Product) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(KEY_ID, product.id)
+        contentValues.put(KEY_NAME, product.name)
+        contentValues.put(KEY_PRICE, product.price)
+        contentValues.put(KEY_WEIGHT, product.weight)
+        try {
+            db.update(TABLE_NAME, contentValues, "id=" + product.id, null)
+        } catch (e: SQLiteException) {
+            e.printStackTrace()
+        }
+        db.close()
+    }
+
+    fun deleteProduct(product: Product) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(KEY_ID, product.id)
+        try {
+            db.delete(TABLE_NAME, "id=" + product.id, null)
+        } catch (e: SQLiteException) {
+            e.printStackTrace()
+        }
+        db.close()
     }
 }

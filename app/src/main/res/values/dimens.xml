@@ -11,8 +11,7 @@
     <dimen name="cardElevation">6dp</dimen>
     <dimen name="textSize_panel">13sp</dimen>
     <dimen name="minHeight">48dp</dimen>
-
-    <dimen name="textSizeTitle_item">14sp</dimen>
-    <dimen name="textSize_item">12sp</dimen>
-
+    <!--list_item-->
+    <dimen name="textSizeTitle_item">20sp</dimen>
+    <dimen name="textSize_item">16sp</dimen>
 </resources>

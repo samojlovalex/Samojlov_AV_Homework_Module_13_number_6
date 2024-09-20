@@ -22,8 +22,8 @@ class ListAdapter(context: Context, listItem: MutableList<Product>) :
         val weight = view?.findViewById<TextView>(R.id.weightItemTV)
 
         name?.text = product?.name
-        price?.text = "${product?.price} руб."
-        weight?.text = "${product?.weight} г"
+        price?.text = "Цена: ${product?.price} руб."
+        weight?.text = "Вес: ${product?.weight} г"
 
         return view!!
     }

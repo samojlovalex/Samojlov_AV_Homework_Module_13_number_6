@@ -81,7 +81,6 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/textSize_Button_Main"
                 android:textStyle="bold"></Button>
-
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_gridview_item"
+        app:cardCornerRadius="@dimen/cardCornerRadius"
+        app:cardElevation="@dimen/cardElevation">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_text">
+
+            <TextView
+                android:id="@+id/updateNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/updateNameTV_Text"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="@dimen/textSize_panel"></TextView>
+
+            <EditText
+                android:id="@+id/updateNameET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nameET_Hint"
+                android:minHeight="@dimen/minHeight"
+                android:textAlignment="textStart"
+                android:textColor="@color/Blue"
+                android:textColorHint="@color/Grey"
+                android:textSize="@dimen/textSize_panel"
+                android:textStyle="bold"></EditText>
+            <TextView
+                android:id="@+id/updatePriceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/updatePriceTV_Text"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="@dimen/textSize_panel"></TextView>
+
+            <EditText
+                android:id="@+id/updatePriceET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/priceET_Hint"
+                android:minHeight="@dimen/minHeight"
+                android:textAlignment="textStart"
+                android:textColor="@color/Blue"
+                android:textColorHint="@color/Grey"
+                android:textSize="@dimen/textSize_panel"
+                android:textStyle="bold"></EditText>
+            <TextView
+                android:id="@+id/updateWeightTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/updateWeightTV_Text"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="@dimen/textSize_panel"></TextView>
+            <EditText
+                android:id="@+id/updateWeightET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/weightET_Hint"
+                android:minHeight="@dimen/minHeight"
+                android:textAlignment="textStart"
+                android:textColor="@color/Blue"
+                android:textColorHint="@color/Grey"
+                android:textSize="@dimen/textSize_panel"
+                android:textStyle="bold"></EditText>
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>

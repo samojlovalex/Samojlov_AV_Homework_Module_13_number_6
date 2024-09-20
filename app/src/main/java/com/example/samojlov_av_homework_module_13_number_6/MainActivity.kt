@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     private var productList = mutableListOf<Product>()
     private var listAdapter: ArrayAdapter<Product>? = null
+    private var id = 0
 
     private val db = DBHelper(this, null)
 
@@ -45,23 +48,63 @@ class MainActivity : AppCompatActivity() {
         }
 
         init()
-        listAdapterInit()
         dbEnter()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        listViewLV.onItemClickListener =
+            AdapterView.OnItemClickListener { _, _, position, _ ->
+                updateRecord(productList[position])
+            }
+    }
+
+    private fun updateRecord(product: Product) {
+        val dialogBuilder = AlertDialog.Builder(this)
+        val inflater = this.layoutInflater
+        val dialogValues = inflater.inflate(R.layout.update_dialog, null)
+        dialogBuilder.setView(dialogValues)
+        val editName = dialogValues.findViewById<EditText>(R.id.updateNameET)
+        val editPrice = dialogValues.findViewById<EditText>(R.id.updatePriceET)
+        val editWeight = dialogValues.findViewById<EditText>(R.id.updateWeightET)
+
+        editName.setText(product.name)
+        editPrice.setText(product.price)
+        editWeight.setText(product.weight)
+
+        dialogBuilder.setTitle(getString(R.string.dialog_Title))
+        dialogBuilder.setPositiveButton(getString(R.string.dialog_PositiveButton)) { _, _ ->
+            val updateName = editName.text.toString().trim()
+            val updatePrice = editPrice.text.toString().trim()
+            val updateWeight = editWeight.text.toString().trim()
+
+            val updateProduct = Product(product.id, updateName, updatePrice, updateWeight)
+            db.updateProduct(updateProduct)
+            listAdapterInit()
+            Toast.makeText(this, getString(R.string.dialog_PositiveButton_Toast), Toast.LENGTH_LONG)
+                .show()
+        }
+        dialogBuilder.setNeutralButton(getString(R.string.dialog_NeutralButton)) { _, _ ->
+            db.deleteProduct(product)
+            listAdapterInit()
+            Toast.makeText(this, getString(R.string.dialog_NeutralButton_Toast), Toast.LENGTH_LONG).show()
+        }
+        dialogBuilder.setNegativeButton(getString(R.string.dialog_NegativeButton), null)
+        dialogBuilder.create().show()
     }
 
     private fun dbEnter() {
         saveBT.setOnClickListener {
             if (nameET.text.isEmpty() || priceET.text.isEmpty() || weightET.text.isEmpty()) return@setOnClickListener
 
-            val name = nameET.text.toString()
-            val price = priceET.text.toString()
-            val weight = weightET.text.toString()
+            val name = nameET.text.toString().trim()
+            val price = priceET.text.toString().trim()
+            val weight = weightET.text.toString().trim()
 
-            val product = Product(name, price, weight)
+            val product = Product(id++, name, price, weight)
             db.addProduct(product)
             Toast.makeText(this, getString(R.string.addProduct_Toast, name), Toast.LENGTH_LONG)
                 .show()
-            productList = db.readProduct()
             listAdapterInit()
 
             nameET.text.clear()
@@ -71,6 +114,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun listAdapterInit() {
+        productList = db.readProduct()
         listAdapter = ListAdapter(this, productList)
         listViewLV.adapter = listAdapter
         listAdapter!!.notifyDataSetChanged()
@@ -88,6 +132,8 @@ class MainActivity : AppCompatActivity() {
         weightET = binding.tablePanel.weightET
         saveBT = binding.saveBT
         listViewLV = binding.listViewLV
+
+        listAdapterInit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -107,12 +153,13 @@ class MainActivity : AppCompatActivity() {
                 ).show()
                 finishAffinity()
             }
+
             R.id.clearMenu -> {
-                Toast.makeText(applicationContext,
-                    getString(R.string.clearMenu_Toast), Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    applicationContext,
+                    getString(R.string.clearMenu_Toast), Toast.LENGTH_LONG
+                ).show()
                 db.removeAll()
-                val list = mutableListOf<Product>()
-                productList = list
                 listAdapterInit()
             }
 

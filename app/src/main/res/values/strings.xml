@@ -18,4 +18,13 @@
     <string name="addProduct_Toast">%1$s добавлен в чек</string>
     <string name="clearMenu">ClearDB</string>
     <string name="clearMenu_Toast">База данных очищена</string>
+    <string name="dialog_Title">Работа с записью</string>
+    <string name="dialog_PositiveButton">Обновить</string>
+    <string name="dialog_PositiveButton_Toast">Данные обновлены</string>
+    <string name="dialog_NeutralButton">Удалить</string>
+    <string name="dialog_NegativeButton">Отмена</string>
+    <string name="dialog_NeutralButton_Toast">Запись удалена</string>
+    <string name="updateNameTV_Text">Наименование</string>
+    <string name="updatePriceTV_Text">Цена, руб</string>
+    <string name="updateWeightTV_Text">Вес, г</string>
 </resources>
